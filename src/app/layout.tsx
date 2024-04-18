@@ -3,6 +3,8 @@ import clsx from "clsx";
 import { Inter, Nunito, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { createClient } from "@/prismicio";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
 	subsets: ["cyrillic"],
@@ -21,14 +23,15 @@ const nunitoSans = Nunito_Sans({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const page = await client.getSingle("settings")
+	const client = createClient();
+	const settings = await client.getSingle("settings");
 
 	return {
-		title: page.data.site_title || "Fallback",
-    description: page.data.meta_desciption || "Мебель-массив. Мебель из сосны.",
+		title: settings.data.site_title || "Fallback",
+		description:
+			settings.data.meta_desciption || "Мебель-массив. Мебель из сосны.",
 		openGraph: {
-			images: [page.data.og_image.url || ""],
+			images: [settings.data.og_image.url || ""],
 		},
 	};
 }
@@ -44,9 +47,9 @@ export default function RootLayout({
 			lang="ru"
 		>
 			<body>
-				<header>Header</header>
+				<Header />
 				{children}
-				<footer>Footer</footer>
+				<Footer />
 			</body>
 		</html>
 	);

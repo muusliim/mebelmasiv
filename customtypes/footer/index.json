@@ -1,0 +1,41 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Footer": {
+      "telephone": {
+        "type": "Text",
+        "config": {
+          "label": "Telephone",
+          "placeholder": ""
+        }
+      },
+      "telephone_2": {
+        "type": "Text",
+        "config": {
+          "label": "Telephone 2",
+          "placeholder": ""
+        }
+      },
+      "adress": {
+        "type": "Text",
+        "config": {
+          "label": "Adress",
+          "placeholder": ""
+        }
+      },
+      "information": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Information",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      }
+    }
+  }
+}
