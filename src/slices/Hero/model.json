@@ -30,6 +30,14 @@
             "multi": "paragraph,strong,em"
           }
         },
+        "bg_image": {
+          "type": "Image",
+          "config": {
+            "label": "bg_image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "button_link": {
           "type": "Link",
           "config": {
@@ -43,22 +51,6 @@
           "config": {
             "label": "Button text",
             "placeholder": ""
-          }
-        },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "image_2": {
-          "type": "Image",
-          "config": {
-            "label": "Image 2",
-            "constraint": {},
-            "thumbnails": []
           }
         }
       },

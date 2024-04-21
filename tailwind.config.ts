@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily:{
+        nunito: ["var(--font-nunito)"],
+        cuprum: ["var(--font-cuprum)"],
+        inter: ["var(--font-inter)"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -32,6 +37,8 @@ const config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        secondaryText: '#461f0d',
+        beige: '#d9c7b1',
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",

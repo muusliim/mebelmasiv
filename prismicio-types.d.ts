@@ -44,13 +44,13 @@ interface FooterDocumentData {
   /**
    * Information field in *Footer*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: footer.information
    * - **Tab**: Footer
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  information: prismic.RichTextField;
+  information: prismic.KeyTextField;
 }
 
 /**
@@ -69,7 +69,7 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = FeaturesSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -241,6 +241,86 @@ export type AllDocumentTypes =
   | SettingsDocument;
 
 /**
+ * Primary content in *Features → Primary*
+ */
+export interface FeaturesSliceDefaultPrimary {
+  /**
+   * Heading field in *Features → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Features → Items*
+ */
+export interface FeaturesSliceDefaultItem {
+  /**
+   * Icon field in *Features → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features.items[].icon
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon: prismic.SelectField<"experience" | "efficiency" | "quality">;
+
+  /**
+   * Title field in *Features → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Descr field in *Features → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features.items[].descr
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descr: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Features Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturesSliceDefaultPrimary>,
+  Simplify<FeaturesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Features*
+ */
+type FeaturesSliceVariation = FeaturesSliceDefault;
+
+/**
+ * Features Shared Slice
+ *
+ * - **API ID**: `features`
+ * - **Description**: Features
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturesSlice = prismic.SharedSlice<
+  "features",
+  FeaturesSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -265,6 +345,16 @@ export interface HeroSliceDefaultPrimary {
   body: prismic.RichTextField;
 
   /**
+   * bg_image field in *Hero → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.bg_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  bg_image: prismic.ImageField<never>;
+
+  /**
    * Button Link field in *Hero → Primary*
    *
    * - **Field Type**: Link
@@ -283,26 +373,6 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   button_text: prismic.KeyTextField;
-
-  /**
-   * Image field in *Hero → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Image 2 field in *Hero → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.image_2
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image_2: prismic.ImageField<never>;
 }
 
 /**
@@ -351,6 +421,11 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      FeaturesSlice,
+      FeaturesSliceDefaultPrimary,
+      FeaturesSliceDefaultItem,
+      FeaturesSliceVariation,
+      FeaturesSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,

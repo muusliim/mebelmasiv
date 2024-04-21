@@ -2,7 +2,7 @@ import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { MousePointerClick } from "lucide-react";
-import Slider from "@/components/Slider";
+import Button from "@/components/Button";
 
 /**
  * Props for `Hero`.
@@ -17,38 +17,40 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="flex flex-col items-center md:p-20 p-3"
+			className=" max-container-hero h-[100vh] w-full flex justify-center items-center"
+			style={{
+				background: `center center / cover no-repeat url(${slice.primary.bg_image.url})`,
+			}}
 		>
-			<PrismicRichText
-				field={slice.primary.heading}
-				components={{
-					heading1: ({ children }) => (
-						<h1 className="text-4xl md:text-7xl font-nunito font-bold leading-tight tracking-tight text-slate-700 mb-5">
-							{children}
-						</h1>
-					),
-				}}
-			/>
-			<PrismicRichText
-				field={slice.primary.body}
-				components={{
-					paragraph: ({ children }) => (
-						<p className="text-[#333e4e] font-nunitoSans md:text-2xl text-lg font-medium md:leading-10 mb-4 max-md:max-w-3xl ">
-							{children}
-						</p>
-					),
-				}}
-			/>
-			<PrismicNextLink
-				field={slice.primary.button_link}
-				className="flex gap-3 m-3 rounded-lg bg-[#333e4e] text-white font-nunito font-bold text-lg px-10 py-4 hover:bg-[#4c5c74] hover:text-white"
-			>
-				{slice.primary.button_text} <MousePointerClick />
-			</PrismicNextLink>
-			<Slider
-				firstImage={slice.primary.image}
-				secondImage={slice.primary.image_2}
-			/>
+			<div className="w-full h-full flex flex-col justify-evenly items-center backdrop-blur-md py-12 max-md:py-12">
+				<PrismicRichText
+					field={slice.primary.heading}
+					components={{
+						heading1: ({ children }) => (
+							<h1 className="text-4xl md:text-7xl font-cuprum font-bold leading-tight tracking-tight text-[#461f0d]">
+								{children}
+							</h1>
+						),
+					}}
+				/>
+				<PrismicRichText
+					field={slice.primary.body}
+					components={{
+						paragraph: ({ children }) => (
+							<p className="text-[#2b2725] text-center font-cuprum md:text-2xl text-lg font-semibold md:leading-10 mb-4 md:w-9/12 px-8">
+								{children}
+							</p>
+						),
+					}}
+				/>
+				<Button
+					field={slice.primary.button_link}
+					className="flex gap-3 m-3 rounded-lg bg-[#461f0d] text-white font-nunito font-bold text-lg px-10 py-4 hover:bg-[#ac6748]"
+				>
+					{slice.primary.button_text} <MousePointerClick />
+				</Button>
+
+			</div>
 		</section>
 	);
 };

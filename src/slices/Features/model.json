@@ -1,0 +1,59 @@
+{
+  "id": "features",
+  "type": "SharedSlice",
+  "name": "Features",
+  "description": "Features",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        }
+      },
+      "items": {
+        "icon": {
+          "type": "Select",
+          "config": {
+            "label": "Icon",
+            "placeholder": "",
+            "options": [
+              "experience",
+              "efficiency",
+              "quality"
+            ]
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3,strong"
+          }
+        },
+        "descr": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descr",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em"
+          }
+        }
+      }
+    }
+  ]
+}

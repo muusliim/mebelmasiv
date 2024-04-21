@@ -12,7 +12,7 @@ import { PrismicNextImage } from "@prismicio/next";
 const Slider = ({ firstImage, secondImage }: { firstImage: any, secondImage: any }) => {
 	return (
 		<Carousel
-			className="w-full max-w-max overflow-hidden"
+			className="max-w-[90%] max-lg:w-max max-md:overflow-hidden shadow-slate-500"
 			opts={{
 				align: "start",
 				loop: true,

@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import clsx from "clsx";
-import { Inter, Nunito, Nunito_Sans } from "next/font/google";
+import { Inter, Nunito, Cuprum } from "next/font/google";
 import "./globals.css";
 import { createClient } from "@/prismicio";
 import Header from "@/components/Header";
@@ -16,9 +16,9 @@ const nunito = Nunito({
 	variable: "--font-nunito",
 	display: "swap",
 });
-const nunitoSans = Nunito_Sans({
+const cuprum = Cuprum({
 	subsets: ["cyrillic"],
-	variable: "--font-nunito-sans",
+	variable: "--font-cuprum",
 	display: "swap",
 });
 
@@ -43,8 +43,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html
-			className={clsx(nunito.variable, nunitoSans.variable, inter.variable)}
 			lang="ru"
+			className={clsx(nunito.variable, cuprum.variable, inter.variable)}
 		>
 			<body>
 				<Header />
