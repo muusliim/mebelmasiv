@@ -18,14 +18,14 @@ const Header = () => {
 		mx-auto fixed top-8 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-md shadow-lg gap-2 backdrop-blur-[3px]"
 		>
 			<Link href={"/"}>
-				<Image src={"/assets/images/logo.png"} alt="logo" height={250} width={250} className="cursor-pointer" />
+				<Image src={"/assets/images/logo.png"} alt="logo" height={250} width={250} className="cursor-pointer w-auto h-auto" />
 			</Link>
 
 			<Nav
 				containerStyle={
 					isShow
 						? "flex flex-col justify-center p-12 fixed bg-[#d9c7b1]/70 top-20 bg-[#d9c7b1]/90 shadow-lg rounded-lg transition-all duration-300 right-0"
-						: "hidden lg:flex gap-14 "
+						: "hidden lg:flex lg:gap-6 xl:gap-14 "
 				}
 				linkStyle={
 					isShow

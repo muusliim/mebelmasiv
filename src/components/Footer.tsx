@@ -36,7 +36,7 @@ const Footer = async () => {
 							<Image
 								src={"/assets/images/logo.png"}
 								alt="footerLogo"
-								className="mt-6"
+								className="mt-6 w-auto h-auto"
 								height={252}
 								width={252}
 							/>

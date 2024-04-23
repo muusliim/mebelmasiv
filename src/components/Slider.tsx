@@ -1,6 +1,6 @@
-'use client'
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
-import Autoplay from 'embla-carousel-autoplay'
+import Autoplay from "embla-carousel-autoplay";
 import {
 	Carousel,
 	CarouselContent,
@@ -9,22 +9,22 @@ import {
 	CarouselPrevious,
 } from "@/components/ui/carousel";
 import { PrismicNextImage } from "@prismicio/next";
-const Slider = ({ firstImage, secondImage }: { firstImage: any, secondImage: any }) => {
+const Slider = ({ images }: any): JSX.Element => {
 	return (
 		<Carousel
-			className="max-w-[90%] max-lg:w-max max-md:overflow-hidden shadow-slate-500"
+			className="w-full max-w-xs max-md:w-[70%] max-md:overflow-hidden "
 			opts={{
 				align: "start",
 				loop: true,
 			}}
-			plugins={[Autoplay({ delay: 3000 })]}
+			plugins={[Autoplay({ delay: 2000 })]}
 		>
 			<CarouselContent>
-				{[firstImage, secondImage].map((item, index) => (
+				{images.map((item: any, index: any) => (
 					<CarouselItem key={index}>
-						<div className="p-1">
+						<div>
 							<Card>
-								<CardContent className="flex aspect-auto items-center justify-center p-4">
+								<CardContent className="flex aspect-square items-center justify-center p-3">
 									<span className="text-4xl font-semibold">
 										<PrismicNextImage field={item} />
 									</span>
@@ -34,8 +34,8 @@ const Slider = ({ firstImage, secondImage }: { firstImage: any, secondImage: any
 					</CarouselItem>
 				))}
 			</CarouselContent>
-			<CarouselPrevious />
-			<CarouselNext />
+			{/* <CarouselPrevious />
+			<CarouselNext /> */}
 		</Carousel>
 	);
 };
