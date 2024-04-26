@@ -11,7 +11,7 @@ const Nav = ({ containerStyle, linkStyle, underlineStyle, theref } : any) => {
         { name: "О нас", path: "/about" },
 		{name: "Наши работы", path: "/works"},
         { name: "Каталог", path: "/shop" },
-        { name: "Контакты", path: "/contact" },
+        { name: "Контакты", path: "/contacts" },
       ];
 
 	const path = usePathname();

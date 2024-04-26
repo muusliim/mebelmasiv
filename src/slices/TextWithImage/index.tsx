@@ -39,15 +39,15 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
 						field={slice.primary.body}
 						components={{
 							paragraph: ({ children }) => (
-								<p className="lg:text-lg lg:mt-5 mt-2 text-sm ">{children}</p>
+								<p className="lg:text-lg lg:ml-7 lg:mt-5 mt-2 text-sm ">{children}</p>
 							),
 						}}
 					/>
 					<Button
 						field={slice.primary.buttonlink}
-						className="w-max mt-14"
+						className="w-max mt-14 lg:ml-7"
 					>
-						<p className="text-sm">{slice.primary.button_text }</p><Images />
+						<p>{slice.primary.button_text }</p><Images />
 					</Button>
 				</div>
 			</div>

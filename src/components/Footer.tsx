@@ -11,7 +11,7 @@ const Footer = async () => {
 		{
 			title: "Разделы",
 			links: ["Главная", "О нас", "Каталог", "Контакты"],
-			linkUrl: ["/", "/about", "/shop", "/contact"],
+			linkUrl: ["/", "/about", "/shop", "/contacts"],
 		},
 		{
 			title: "Наши контакты",
@@ -36,7 +36,7 @@ const Footer = async () => {
 							<Image
 								src={"/assets/images/logo.png"}
 								alt="footerLogo"
-								className="mt-6 w-auto h-auto"
+								className="mt-6 w-auto h-auto bg-beige shadow-lg shadow-beige rounded-sm "
 								height={252}
 								width={252}
 							/>
@@ -79,19 +79,5 @@ const Footer = async () => {
 		</footer>
 	);
 };
-// <footer>
-//     <div>
-//     <p>Наш телефон:</p>
-// 	<Link href={"tel:" + footerSettings.data.telephone}>{footerSettings.data.telephone}</Link>
-// 	<Link href={"tel:" + footerSettings.data.telephone_2}>{footerSettings.data.telephone_2}</Link>
-//     </div>
-// 	<div>
-// 		{new Date().getFullYear()} ©{" "}
-// 		<PrismicRichText field={footerSettings.data.information} />
-//     </div>
-// 	<div>
-//         {footerSettings.data.adress}
-// 	</div>
-// </footer>
 
 export default Footer;

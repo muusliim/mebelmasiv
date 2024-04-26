@@ -4,6 +4,82 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type ContactsDocumentDataSlicesSlice = ContactsSlice;
+
+/**
+ * Content for Contact documents
+ */
+interface ContactsDocumentData {
+  /**
+   * Title field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Contact*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContactsDocumentDataSlicesSlice> /**
+   * Meta Description field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: contacts.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Contact*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: contacts.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Contact document from Prismic
+ *
+ * - **API ID**: `contacts`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactsDocumentData>,
+    "contacts",
+    Lang
+  >;
+
 /**
  * Content for Footer documents
  */
@@ -70,6 +146,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomepageDocumentDataSlicesSlice =
+  | ContactsSlice
   | TextWithImageSlice
   | FeaturesSlice
   | HeroSlice;
@@ -239,9 +316,75 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | ContactsDocument
   | FooterDocument
   | HomepageDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *Contacts → Primary*
+ */
+export interface ContactsSliceDefaultPrimary {
+  /**
+   * Heading field in *Contacts → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *Contacts → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Geoposition field in *Contacts → Primary*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.geoposition
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  geoposition: prismic.GeoPointField;
+}
+
+/**
+ * Default variation for Contacts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Contacts*
+ */
+type ContactsSliceVariation = ContactsSliceDefault;
+
+/**
+ * Contacts Shared Slice
+ *
+ * - **API ID**: `contacts`
+ * - **Description**: Contacts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactsSlice = prismic.SharedSlice<
+  "contacts",
+  ContactsSliceVariation
+>;
 
 /**
  * Primary content in *Features → Primary*
@@ -505,6 +648,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ContactsDocument,
+      ContactsDocumentData,
+      ContactsDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       HomepageDocument,
@@ -514,6 +660,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      ContactsSlice,
+      ContactsSliceDefaultPrimary,
+      ContactsSliceVariation,
+      ContactsSliceDefault,
       FeaturesSlice,
       FeaturesSliceDefaultPrimary,
       FeaturesSliceDefaultItem,

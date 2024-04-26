@@ -8,8 +8,11 @@
   box-sizing: border-box;
 }
 
+
 body {
   background-color: #fbfbef;
+  scroll-behavior: smooth;
+
 }
 
 @layer base {
