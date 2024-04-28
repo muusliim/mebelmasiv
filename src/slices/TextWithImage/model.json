@@ -57,6 +57,85 @@
           }
         }
       }
+    },
+    {
+      "id": "noSlider",
+      "name": "NoSlider",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,strong,em"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,em,strong"
+          }
+        },
+        "buttonlink": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": ""
+          }
+        },
+        "collage_photo": {
+          "type": "Image",
+          "config": {
+            "label": "Collage_photo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "heading_advantages": {
+          "type": "Text",
+          "config": {
+            "label": "heading_advantages",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "header_advantages": {
+          "type": "StructuredText",
+          "config": {
+            "label": "header_advantages",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3,strong,em"
+          }
+        },
+        "descr_advantages": {
+          "type": "StructuredText",
+          "config": {
+            "label": "descr_advantages",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      }
     }
   ]
 }

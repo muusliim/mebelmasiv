@@ -8,7 +8,7 @@ const Nav = ({ containerStyle, linkStyle, underlineStyle, theref } : any) => {
 
     const navData = [
         { name: "Главная", path: "/" },
-        { name: "О нас", path: "/about" },
+        { name: "О нас", path: "/about_us" },
 		{name: "Наши работы", path: "/works"},
         { name: "Каталог", path: "/shop" },
         { name: "Контакты", path: "/contacts" },

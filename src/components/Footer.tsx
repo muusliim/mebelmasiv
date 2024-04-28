@@ -30,15 +30,15 @@ const Footer = async () => {
 	return (
 		<footer className="flexCenter bg-secondaryText">
 			<div className="padding-container max-container flex w-full bg-inherit flex-col gap-14">
-				<div className="flex flex-col items-start justify-center gap-[10%] md:flex-row">
+				<div className="flex flex-col items-center justify-center gap-[10%] md:flex-row">
 					<div className="mb-6">
 						<Link href={"/"}>
 							<Image
-								src={"/assets/images/logo.png"}
+								src={"/assets/images/logo_small.png"}
 								alt="footerLogo"
-								className="mt-6 w-auto h-auto bg-beige shadow-lg shadow-beige rounded-sm "
-								height={252}
-								width={252}
+								className="mt-6 w-auto h-auto"
+								height={200}
+								width={200}
 							/>
 						</Link>
 						<p className="max-w-xs text-primary pt-8"></p>

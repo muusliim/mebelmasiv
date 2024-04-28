@@ -4,6 +4,82 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AboutUsDocumentDataSlicesSlice = TextWithImageSlice;
+
+/**
+ * Content for About us documents
+ */
+interface AboutUsDocumentData {
+  /**
+   * Title field in *About us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *About us*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutUsDocumentDataSlicesSlice> /**
+   * Meta Description field in *About us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: about_us.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *About us*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *About us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: about_us.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * About us document from Prismic
+ *
+ * - **API ID**: `about_us`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutUsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AboutUsDocumentData>,
+    "about_us",
+    Lang
+  >;
+
 type ContactsDocumentDataSlicesSlice = ContactsSlice;
 
 /**
@@ -316,6 +392,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AboutUsDocument
   | ContactsDocument
   | FooterDocument
   | HomepageDocument
@@ -622,9 +699,114 @@ export type TextWithImageSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *TextWithImage → Primary*
+ */
+export interface TextWithImageSliceNoSliderPrimary {
+  /**
+   * Heading field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button Link field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.buttonlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  buttonlink: prismic.LinkField;
+
+  /**
+   * Button Text field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Collage_photo field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.collage_photo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  collage_photo: prismic.ImageField<never>;
+
+  /**
+   * heading_advantages field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.heading_advantages
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_advantages: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *TextWithImage → Items*
+ */
+export interface TextWithImageSliceNoSliderItem {
+  /**
+   * header_advantages field in *TextWithImage → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.items[].header_advantages
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  header_advantages: prismic.RichTextField;
+
+  /**
+   * descr_advantages field in *TextWithImage → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.items[].descr_advantages
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descr_advantages: prismic.RichTextField;
+}
+
+/**
+ * NoSlider variation for TextWithImage Slice
+ *
+ * - **API ID**: `noSlider`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithImageSliceNoSlider = prismic.SharedSliceVariation<
+  "noSlider",
+  Simplify<TextWithImageSliceNoSliderPrimary>,
+  Simplify<TextWithImageSliceNoSliderItem>
+>;
+
+/**
  * Slice variation for *TextWithImage*
  */
-type TextWithImageSliceVariation = TextWithImageSliceDefault;
+type TextWithImageSliceVariation =
+  | TextWithImageSliceDefault
+  | TextWithImageSliceNoSlider;
 
 /**
  * TextWithImage Shared Slice
@@ -648,6 +830,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutUsDocument,
+      AboutUsDocumentData,
+      AboutUsDocumentDataSlicesSlice,
       ContactsDocument,
       ContactsDocumentData,
       ContactsDocumentDataSlicesSlice,
@@ -676,8 +861,11 @@ declare module "@prismicio/client" {
       TextWithImageSlice,
       TextWithImageSliceDefaultPrimary,
       TextWithImageSliceDefaultItem,
+      TextWithImageSliceNoSliderPrimary,
+      TextWithImageSliceNoSliderItem,
       TextWithImageSliceVariation,
       TextWithImageSliceDefault,
+      TextWithImageSliceNoSlider,
     };
   }
 }
