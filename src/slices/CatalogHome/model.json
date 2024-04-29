@@ -1,8 +1,8 @@
 {
-  "id": "hero",
+  "id": "catalog_home",
   "type": "SharedSlice",
-  "name": "Hero",
-  "description": "Hero",
+  "name": "CatalogHome",
+  "description": "CatalogHome",
   "variations": [
     {
       "id": "default",
@@ -18,59 +18,44 @@
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1"
+            "multi": "heading2,strong,em"
           }
         },
-        "body": {
+        "descr": {
           "type": "StructuredText",
           "config": {
-            "label": "Body",
+            "label": "Descr",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em"
           }
-        },
-        "bg_image": {
-          "type": "Image",
-          "config": {
-            "label": "bg_image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "button_link": {
-          "type": "Link",
-          "config": {
-            "label": "Button Link",
-            "placeholder": "",
-            "select": null
-          }
-        },
-        "button_text": {
-          "type": "Text",
-          "config": {
-            "label": "Button text",
-            "placeholder": ""
-          }
-        },
-        "coupon": {
-          "type": "Image",
-          "config": {
-            "label": "Coupon",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "couponlink": {
-          "type": "Link",
-          "config": {
-            "label": "CouponLink",
-            "placeholder": "",
-            "select": null
-          }
         }
       },
-      "items": {}
+      "items": {
+        "categoryimage": {
+          "type": "Image",
+          "config": {
+            "label": "CategoryImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "categorylink": {
+          "type": "Link",
+          "config": {
+            "label": "CategoryLink",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "categorytext": {
+          "type": "Text",
+          "config": {
+            "label": "CategoryText",
+            "placeholder": ""
+          }
+        }
+      }
     }
   ]
 }

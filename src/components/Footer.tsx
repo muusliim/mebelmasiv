@@ -1,5 +1,4 @@
 import { createClient } from "@/prismicio";
-import { PrismicNextLink } from "@prismicio/next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,8 +9,8 @@ const Footer = async () => {
 	const FOOTER_LINKS = [
 		{
 			title: "Разделы",
-			links: ["Главная", "О нас", "Каталог", "Контакты"],
-			linkUrl: ["/", "/about", "/shop", "/contacts"],
+			links: ["Главная", "О нас", "Портфолио", "Каталог", "Контакты"],
+			linkUrl: ["/", "/about_us", "/works", "/catalog", "/contacts"],
 		},
 		{
 			title: "Наши контакты",
@@ -28,7 +27,7 @@ const Footer = async () => {
 	];
 
 	return (
-		<footer className="flexCenter bg-secondaryText">
+		<footer className="flexCenter bg-secondaryText mt-20">
 			<div className="padding-container max-container flex w-full bg-inherit flex-col gap-14">
 				<div className="flex flex-col items-center justify-center gap-[10%] md:flex-row">
 					<div className="mb-6">

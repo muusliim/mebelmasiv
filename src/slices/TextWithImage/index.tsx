@@ -47,19 +47,19 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
 	});
 	return (
 		<section
-			className="bg-secondaryText/5 overflow-hidden"
+			className=" overflow-hidden"
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 		>
 			{slice.variation === "default" ? (
-				<div className="max-container w-full p-10 mb-20 grid md:grid-cols-2 place-items-center lg:gap-10 ">
+				<div className="max-container w-full p-10 md:mb-20 grid md:grid-cols-2 place-items-center lg:gap-10 ">
 					<Slider images={images} />
 					<div className="md:order-first overflow-hidden">
 						<PrismicRichText
 							field={slice.primary.heading}
 							components={{
 								heading2: ({ children }) => (
-									<h2 className="md:text-7xl text-2xl font-nunito regular-28 leading-tight tracking-tight text-[#461f0d] mt-10 lg:mb-12 mb-6 text-center">
+									<h2 className="heading">
 										{children}
 									</h2>
 								),
@@ -90,7 +90,7 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
 						field={slice.primary.heading}
 						components={{
 							heading2: ({ children }) => (
-								<h2 className="md:text-7xl text-2xl font-nunito regular-28 leading-tight tracking-tight text-[#461f0d] mt-16 lg:mb-12 mb-6 text-center">
+								<h2 className="heading_mt">
 									{children}
 								</h2>
 							),

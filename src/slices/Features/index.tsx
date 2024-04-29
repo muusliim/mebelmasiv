@@ -21,6 +21,7 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
+			className="bg-secondaryText/5"
 		>
 			<div className="max-container p-10 mb-20">
 				<PrismicRichText

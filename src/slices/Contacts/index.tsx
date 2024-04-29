@@ -15,8 +15,9 @@ const Contacts = ({ slice }: ContactsProps): JSX.Element => {
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
+			
 		>
-			<div className="max-container p-10 md:pt-16  mb-20">
+			<div className="max-container p-10 md:pt-16">
 				<PrismicRichText
 					field={slice.primary.heading}
 					components={{

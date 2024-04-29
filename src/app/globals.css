@@ -88,6 +88,14 @@ body {
     -webkit-text-stroke-color: #fff;
   }
 
+  .heading {
+    @apply md:text-7xl text-2xl font-nunito regular-28 leading-tight tracking-tight text-[#461f0d] mt-10 lg:mb-12 mb-6 text-center
+  }
+
+  .heading_mt {
+    @apply md:text-7xl text-2xl font-nunito regular-28 leading-tight tracking-tight text-[#461f0d] mt-16 lg:mb-12 mb-6 text-center
+  }
+
   .btn_white {
     @apply border-2 border-white bg-white px-8 py-2 bold-16 text-gray-90
   }

@@ -1,8 +1,16 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { MousePointerClick } from "lucide-react";
+import { CirclePercent, MousePointerClick } from "lucide-react";
 import Button from "@/components/Button";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
 
 /**
  * Props for `Hero`.
@@ -49,7 +57,30 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 				>
 					{slice.primary.button_text} <MousePointerClick />
 				</Button>
-
+				<Dialog>
+					<DialogTrigger>
+						<div className="fixed lg:bottom-12 md:size-20 size-14 bottom-10 right-0 rounded-full bg-white md:right-16 -translate-x-1/2 md:-translate-y-1/2 animate-pulse hover:animate-none hover:scale-110 transition-all delay-200">
+							<CirclePercent className="text-red-700 md:size-20 size-14" />
+							<p className="text-red-800 font-nunito md:bold-32 -rotate-12 bold-16 translate-x-2">
+								Акция!
+							</p>
+						</div>
+					</DialogTrigger>
+					<DialogContent className="sm:max-w-[425px]">
+						<DialogHeader>
+							<DialogTitle>Акция!</DialogTitle>
+							<DialogDescription>
+								Предъявив в нашем салоне данный купон Вы получите скидку 5%
+							</DialogDescription>
+						</DialogHeader>
+						<PrismicNextLink field={slice.primary.couponlink}>
+						<PrismicNextImage
+							field={slice.primary.coupon}
+							fallback={<p>Что-то пошло не так...</p>}
+						/>
+						</PrismicNextLink>
+					</DialogContent>
+				</Dialog>
 			</div>
 		</section>
 	);

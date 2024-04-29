@@ -222,6 +222,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomepageDocumentDataSlicesSlice =
+  | CatalogHomeSlice
   | ContactsSlice
   | TextWithImageSlice
   | FeaturesSlice
@@ -391,12 +392,175 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+type WorksDocumentDataSlicesSlice = WorksSlice;
+
+/**
+ * Content for Works documents
+ */
+interface WorksDocumentData {
+  /**
+   * Title field in *Works*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Works*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<WorksDocumentDataSlicesSlice> /**
+   * Meta Description field in *Works*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: works.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Works*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Works*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: works.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Works document from Prismic
+ *
+ * - **API ID**: `works`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WorksDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<WorksDocumentData>, "works", Lang>;
+
 export type AllDocumentTypes =
   | AboutUsDocument
   | ContactsDocument
   | FooterDocument
   | HomepageDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | WorksDocument;
+
+/**
+ * Primary content in *CatalogHome → Primary*
+ */
+export interface CatalogHomeSliceDefaultPrimary {
+  /**
+   * Heading field in *CatalogHome → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_home.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Descr field in *CatalogHome → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_home.primary.descr
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descr: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *CatalogHome → Items*
+ */
+export interface CatalogHomeSliceDefaultItem {
+  /**
+   * CategoryImage field in *CatalogHome → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_home.items[].categoryimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  categoryimage: prismic.ImageField<never>;
+
+  /**
+   * CategoryLink field in *CatalogHome → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_home.items[].categorylink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  categorylink: prismic.LinkField;
+
+  /**
+   * CategoryText field in *CatalogHome → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_home.items[].categorytext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  categorytext: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for CatalogHome Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CatalogHomeSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CatalogHomeSliceDefaultPrimary>,
+  Simplify<CatalogHomeSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CatalogHome*
+ */
+type CatalogHomeSliceVariation = CatalogHomeSliceDefault;
+
+/**
+ * CatalogHome Shared Slice
+ *
+ * - **API ID**: `catalog_home`
+ * - **Description**: CatalogHome
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CatalogHomeSlice = prismic.SharedSlice<
+  "catalog_home",
+  CatalogHomeSliceVariation
+>;
 
 /**
  * Primary content in *Contacts → Primary*
@@ -596,6 +760,26 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   button_text: prismic.KeyTextField;
+
+  /**
+   * Coupon field in *Hero → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.coupon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  coupon: prismic.ImageField<never>;
+
+  /**
+   * CouponLink field in *Hero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.couponlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  couponlink: prismic.LinkField;
 }
 
 /**
@@ -820,6 +1004,63 @@ export type TextWithImageSlice = prismic.SharedSlice<
   TextWithImageSliceVariation
 >;
 
+/**
+ * Primary content in *Works → Primary*
+ */
+export interface WorksSliceDefaultPrimary {
+  /**
+   * Heading field in *Works → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Works → Items*
+ */
+export interface WorksSliceDefaultItem {
+  /**
+   * Gallery_image field in *Works → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.items[].gallery_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  gallery_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Works Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WorksSliceDefaultPrimary>,
+  Simplify<WorksSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Works*
+ */
+type WorksSliceVariation = WorksSliceDefault;
+
+/**
+ * Works Shared Slice
+ *
+ * - **API ID**: `works`
+ * - **Description**: Works
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSlice = prismic.SharedSlice<"works", WorksSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -844,7 +1085,15 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      WorksDocument,
+      WorksDocumentData,
+      WorksDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CatalogHomeSlice,
+      CatalogHomeSliceDefaultPrimary,
+      CatalogHomeSliceDefaultItem,
+      CatalogHomeSliceVariation,
+      CatalogHomeSliceDefault,
       ContactsSlice,
       ContactsSliceDefaultPrimary,
       ContactsSliceVariation,
@@ -866,6 +1115,11 @@ declare module "@prismicio/client" {
       TextWithImageSliceVariation,
       TextWithImageSliceDefault,
       TextWithImageSliceNoSlider,
+      WorksSlice,
+      WorksSliceDefaultPrimary,
+      WorksSliceDefaultItem,
+      WorksSliceVariation,
+      WorksSliceDefault,
     };
   }
 }

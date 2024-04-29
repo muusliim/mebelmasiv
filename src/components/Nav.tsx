@@ -10,7 +10,7 @@ const Nav = ({ containerStyle, linkStyle, underlineStyle, theref } : any) => {
         { name: "Главная", path: "/" },
         { name: "О нас", path: "/about_us" },
 		{name: "Наши работы", path: "/works"},
-        { name: "Каталог", path: "/shop" },
+        { name: "Каталог", path: "/catalog" },
         { name: "Контакты", path: "/contacts" },
       ];
 
