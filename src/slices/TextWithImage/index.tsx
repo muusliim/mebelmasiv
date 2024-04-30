@@ -52,7 +52,7 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
 			data-slice-variation={slice.variation}
 		>
 			{slice.variation === "default" ? (
-				<div className="max-container w-full p-10 md:mb-20 grid md:grid-cols-2 place-items-center lg:gap-10 ">
+				<div className="max-container w-full p-10 md:mb-20 grid md:grid-cols-2 place-items-center lg:gap-10 lg:pr-0">
 					<Slider images={images} />
 					<div className="md:order-first overflow-hidden">
 						<PrismicRichText

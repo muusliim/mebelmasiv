@@ -1,0 +1,61 @@
+{
+  "id": "catalog_main_page",
+  "type": "SharedSlice",
+  "name": "Catalog",
+  "description": "CatalogMainPage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,strong,em"
+          }
+        },
+        "descr": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descr",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,heading3,heading4"
+          }
+        }
+      },
+      "items": {
+        "categoryimage": {
+          "type": "Image",
+          "config": {
+            "label": "CategoryImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "category_menu": {
+          "type": "Select",
+          "config": {
+            "label": "Category_menu",
+            "placeholder": "",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
