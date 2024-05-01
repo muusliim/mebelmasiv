@@ -1,7 +1,7 @@
 {
   "id": "catalog_home",
   "type": "SharedSlice",
-  "name": "CatalogHome",
+  "name": "CatalogStartPage",
   "description": "CatalogHome",
   "variations": [
     {

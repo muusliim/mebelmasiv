@@ -1,8 +1,8 @@
 {
-  "id": "catalog_main_page",
+  "id": "catalog",
   "type": "SharedSlice",
   "name": "Catalog",
-  "description": "CatalogMainPage",
+  "description": "Catalog",
   "variations": [
     {
       "id": "default",
@@ -18,7 +18,7 @@
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1,heading2,strong,em"
+            "multi": "heading1,strong,em,heading2"
           }
         },
         "descr": {
@@ -27,31 +27,18 @@
             "label": "Descr",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,heading3,heading4"
+            "multi": "paragraph,heading3,strong,em"
           }
         }
       },
       "items": {
-        "categoryimage": {
-          "type": "Image",
+        "category": {
+          "type": "Link",
           "config": {
-            "label": "CategoryImage",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "category_menu": {
-          "type": "Select",
-          "config": {
-            "label": "Category_menu",
-            "placeholder": "",
-            "options": [
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6"
+            "label": "Category",
+            "select": "document",
+            "customtypes": [
+              "catalog_cards"
             ]
           }
         }

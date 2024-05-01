@@ -1,0 +1,56 @@
+{
+  "format": "custom",
+  "id": "catalog_cards",
+  "label": "Catalog_cards",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "card_name": {
+        "type": "Text",
+        "config": {
+          "label": "Card_Name",
+          "placeholder": ""
+        }
+      },
+      "card_image": {
+        "type": "Image",
+        "config": {
+          "label": "Card_Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "card_links": {
+        "type": "Group",
+        "config": {
+          "label": "Card_Links",
+          "repeat": true,
+          "fields": {
+            "card_link": {
+              "type": "Link",
+              "config": {
+                "label": "Card_Link",
+                "placeholder": "",
+                "select": null
+              }
+            },
+            "card_linktext": {
+              "type": "Text",
+              "config": {
+                "label": "Card_linkText",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,29 +1,32 @@
-"use client";
-import { Content } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
+import { createClient } from "@/prismicio";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 /**
- * Props for `CatalogMainPage`.
+ * Props for `Catalog`.
  */
-export type CatalogMainPageProps =
-	SliceComponentProps<Content.CatalogMainPageSlice>;
+export type CatalogProps = SliceComponentProps<Content.CatalogSlice>;
 
 /**
- * Component for "CatalogMainPage" Slices.
+ * Component for "Catalog" Slices.
  */
-const CatalogMainPage = ({ slice }: CatalogMainPageProps): JSX.Element => {
-	const images = slice.items.map((item: any) => item.categoryimage);
-
-	console.log(images);
-
+const Catalog = async ({ slice }: CatalogProps): Promise<JSX.Element> => {
+	const client = createClient();
+	const categories = await Promise.all(
+		slice.items.map((item) => {
+			if (isFilled.contentRelationship(item.category) && item.category.uid) {
+				return client.getByUID("catalog_cards", item.category.uid);
+			}
+		})
+	);
 	return (
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="text-center mb-20 max-container padding-container w-full p-10"
+			className="max-container p-10 md:pt-16"
 		>
-			<div className="mb-20">
+			<div className=" text-center mb-20">
 				<PrismicRichText
 					field={slice.primary.heading}
 					components={{
@@ -45,21 +48,29 @@ const CatalogMainPage = ({ slice }: CatalogMainPageProps): JSX.Element => {
 			</div>
 
 			<div className="flexCenter flex-wrap gap-12 lg:gap-14">
-				{images.map((item, i) => (
+				{categories.map((item, i) => (
 					<div key={i} className="flex flex-col">
 						<div
 							className="relative after:absolute after:-top-[10px] after:-bottom-[10px] 
-                    after:-left-[10px] after:-right-[10px] after:border
-                     after:border-black/30 after:rounded-md 
-                     hover:after:top-[10px] hover:after:bottom-[10px] hover:after:left-[10px] 
-                     hover:after:right-[10px] hover:after:bg-black/90
-                      hover:after:border-white after:transition-all after:duration-700 group"
+				after:-left-[10px] after:-right-[10px] after:border
+				 after:border-black/30 after:rounded-md 
+				 hover:after:top-[10px] hover:after:bottom-[10px] hover:after:left-[10px] 
+				 hover:after:right-[10px] hover:after:bg-black/90
+				  hover:after:border-white after:transition-all after:duration-700 group"
 						>
 							<PrismicNextImage
-								field={item}
 								className="rounded-md h-[350] w-[255]"
+								field={item?.data.card_image}
+								width={255}
+								height={350}
 							/>
+							<div className="flex flex-col gap-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 scale-0 transition-all duration-700 group-hover:!scale-100 text-white">
+								{item?.data.card_links.map((link, i) => (
+									<PrismicNextLink key={link.card_linktext} field={link?.card_link} className="hover:text-beige hover:underline">{link.card_linktext}</PrismicNextLink>
+								))}
+							</div>
 						</div>
+						<p className="medium-20 capitalize text-center mt-6">{item?.data.card_name}</p>
 					</div>
 				))}
 			</div>
@@ -67,4 +78,4 @@ const CatalogMainPage = ({ slice }: CatalogMainPageProps): JSX.Element => {
 	);
 };
 
-export default CatalogMainPage;
+export default Catalog;

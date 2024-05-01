@@ -80,7 +80,7 @@ export type AboutUsDocument<Lang extends string = string> =
     Lang
   >;
 
-type CatalogDocumentDataSlicesSlice = CatalogMainPageSlice;
+type CatalogDocumentDataSlicesSlice = CatalogSlice;
 
 /**
  * Content for Catalog documents
@@ -153,6 +153,87 @@ export type CatalogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<CatalogDocumentData>,
     "catalog",
+    Lang
+  >;
+
+/**
+ * Item in *Catalog_cards → Card_Links*
+ */
+export interface CatalogCardsDocumentDataCardLinksItem {
+  /**
+   * Card_Link field in *Catalog_cards → Card_Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_cards.card_links[].card_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card_link: prismic.LinkField;
+
+  /**
+   * Card_linkText field in *Catalog_cards → Card_Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_cards.card_links[].card_linktext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_linktext: prismic.KeyTextField;
+}
+
+/**
+ * Content for Catalog_cards documents
+ */
+interface CatalogCardsDocumentData {
+  /**
+   * Card_Name field in *Catalog_cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_cards.card_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_name: prismic.KeyTextField;
+
+  /**
+   * Card_Image field in *Catalog_cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_cards.card_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  card_image: prismic.ImageField<never>;
+
+  /**
+   * Card_Links field in *Catalog_cards*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_cards.card_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card_links: prismic.GroupField<
+    Simplify<CatalogCardsDocumentDataCardLinksItem>
+  >;
+}
+
+/**
+ * Catalog_cards document from Prismic
+ *
+ * - **API ID**: `catalog_cards`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CatalogCardsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CatalogCardsDocumentData>,
+    "catalog_cards",
     Lang
   >;
 
@@ -543,6 +624,7 @@ export type WorksDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | AboutUsDocument
   | CatalogDocument
+  | CatalogCardsDocument
   | ContactsDocument
   | FooterDocument
   | HomepageDocument
@@ -550,11 +632,81 @@ export type AllDocumentTypes =
   | WorksDocument;
 
 /**
- * Primary content in *CatalogHome → Primary*
+ * Primary content in *Catalog → Primary*
+ */
+export interface CatalogSliceDefaultPrimary {
+  /**
+   * Heading field in *Catalog → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Descr field in *Catalog → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog.primary.descr
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descr: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Catalog → Items*
+ */
+export interface CatalogSliceDefaultItem {
+  /**
+   * Category field in *Catalog → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog.items[].category
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  category: prismic.ContentRelationshipField<"catalog_cards">;
+}
+
+/**
+ * Default variation for Catalog Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CatalogSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CatalogSliceDefaultPrimary>,
+  Simplify<CatalogSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Catalog*
+ */
+type CatalogSliceVariation = CatalogSliceDefault;
+
+/**
+ * Catalog Shared Slice
+ *
+ * - **API ID**: `catalog`
+ * - **Description**: Catalog
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CatalogSlice = prismic.SharedSlice<
+  "catalog",
+  CatalogSliceVariation
+>;
+
+/**
+ * Primary content in *CatalogStartPage → Primary*
  */
 export interface CatalogHomeSliceDefaultPrimary {
   /**
-   * Heading field in *CatalogHome → Primary*
+   * Heading field in *CatalogStartPage → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -564,7 +716,7 @@ export interface CatalogHomeSliceDefaultPrimary {
   heading: prismic.RichTextField;
 
   /**
-   * Descr field in *CatalogHome → Primary*
+   * Descr field in *CatalogStartPage → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -575,11 +727,11 @@ export interface CatalogHomeSliceDefaultPrimary {
 }
 
 /**
- * Primary content in *CatalogHome → Items*
+ * Primary content in *CatalogStartPage → Items*
  */
 export interface CatalogHomeSliceDefaultItem {
   /**
-   * CategoryImage field in *CatalogHome → Items*
+   * CategoryImage field in *CatalogStartPage → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -589,7 +741,7 @@ export interface CatalogHomeSliceDefaultItem {
   categoryimage: prismic.ImageField<never>;
 
   /**
-   * CategoryLink field in *CatalogHome → Items*
+   * CategoryLink field in *CatalogStartPage → Items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -599,7 +751,7 @@ export interface CatalogHomeSliceDefaultItem {
   categorylink: prismic.LinkField;
 
   /**
-   * CategoryText field in *CatalogHome → Items*
+   * CategoryText field in *CatalogStartPage → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -610,7 +762,7 @@ export interface CatalogHomeSliceDefaultItem {
 }
 
 /**
- * Default variation for CatalogHome Slice
+ * Default variation for CatalogStartPage Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -623,12 +775,12 @@ export type CatalogHomeSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *CatalogHome*
+ * Slice variation for *CatalogStartPage*
  */
 type CatalogHomeSliceVariation = CatalogHomeSliceDefault;
 
 /**
- * CatalogHome Shared Slice
+ * CatalogStartPage Shared Slice
  *
  * - **API ID**: `catalog_home`
  * - **Description**: CatalogHome
@@ -637,86 +789,6 @@ type CatalogHomeSliceVariation = CatalogHomeSliceDefault;
 export type CatalogHomeSlice = prismic.SharedSlice<
   "catalog_home",
   CatalogHomeSliceVariation
->;
-
-/**
- * Primary content in *Catalog → Primary*
- */
-export interface CatalogMainPageSliceDefaultPrimary {
-  /**
-   * Heading field in *Catalog → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: catalog_main_page.primary.heading
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * Descr field in *Catalog → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: catalog_main_page.primary.descr
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  descr: prismic.RichTextField;
-}
-
-/**
- * Primary content in *Catalog → Items*
- */
-export interface CatalogMainPageSliceDefaultItem {
-  /**
-   * CategoryImage field in *Catalog → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: catalog_main_page.items[].categoryimage
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  categoryimage: prismic.ImageField<never>;
-
-  /**
-   * Category_menu field in *Catalog → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: catalog_main_page.items[].category_menu
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  category_menu: prismic.SelectField<"1" | "2" | "3" | "4" | "5" | "6">;
-}
-
-/**
- * Default variation for Catalog Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CatalogMainPageSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<CatalogMainPageSliceDefaultPrimary>,
-  Simplify<CatalogMainPageSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Catalog*
- */
-type CatalogMainPageSliceVariation = CatalogMainPageSliceDefault;
-
-/**
- * Catalog Shared Slice
- *
- * - **API ID**: `catalog_main_page`
- * - **Description**: CatalogMainPage
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CatalogMainPageSlice = prismic.SharedSlice<
-  "catalog_main_page",
-  CatalogMainPageSliceVariation
 >;
 
 /**
@@ -1234,6 +1306,9 @@ declare module "@prismicio/client" {
       CatalogDocument,
       CatalogDocumentData,
       CatalogDocumentDataSlicesSlice,
+      CatalogCardsDocument,
+      CatalogCardsDocumentData,
+      CatalogCardsDocumentDataCardLinksItem,
       ContactsDocument,
       ContactsDocumentData,
       ContactsDocumentDataSlicesSlice,
@@ -1249,16 +1324,16 @@ declare module "@prismicio/client" {
       WorksDocumentData,
       WorksDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CatalogSlice,
+      CatalogSliceDefaultPrimary,
+      CatalogSliceDefaultItem,
+      CatalogSliceVariation,
+      CatalogSliceDefault,
       CatalogHomeSlice,
       CatalogHomeSliceDefaultPrimary,
       CatalogHomeSliceDefaultItem,
       CatalogHomeSliceVariation,
       CatalogHomeSliceDefault,
-      CatalogMainPageSlice,
-      CatalogMainPageSliceDefaultPrimary,
-      CatalogMainPageSliceDefaultItem,
-      CatalogMainPageSliceVariation,
-      CatalogMainPageSliceDefault,
       ContactsSlice,
       ContactsSliceDefaultPrimary,
       ContactsSliceVariation,
