@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 export const components = {
   catalog: dynamic(() => import("./Catalog")),
+  catalog_category: dynamic(() => import("./CatalogCategory")),
   catalog_home: dynamic(() => import("./CatalogStartPage")),
   contacts: dynamic(() => import("./Contacts")),
   features: dynamic(() => import("./Features")),

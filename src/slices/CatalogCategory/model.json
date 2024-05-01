@@ -1,0 +1,64 @@
+{
+  "id": "catalog_category",
+  "type": "SharedSlice",
+  "name": "CatalogCategory",
+  "description": "CatalogCategory",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,strong,em"
+          }
+        },
+        "descr": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descr",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em"
+          }
+        }
+      },
+      "items": {
+        "ctgimage": {
+          "type": "Image",
+          "config": {
+            "label": "CtgImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "ctgheading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "CtgHeading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3,strong,em"
+          }
+        },
+        "ctgdescr": {
+          "type": "StructuredText",
+          "config": {
+            "label": "CtgDescr",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em"
+          }
+        }
+      }
+    }
+  ]
+}
