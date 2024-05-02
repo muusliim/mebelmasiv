@@ -790,6 +790,46 @@ export interface CatalogCategorySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   descr: prismic.RichTextField;
+
+  /**
+   * PrevLink field in *CatalogCategory → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_category.primary.prevlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  prevlink: prismic.LinkField;
+
+  /**
+   * PrevLinkText field in *CatalogCategory → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_category.primary.prev_link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  prev_link_text: prismic.KeyTextField;
+
+  /**
+   * NextLink field in *CatalogCategory → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_category.primary.nextlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  nextlink: prismic.LinkField;
+
+  /**
+   * NextLinkText field in *CatalogCategory → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_category.primary.next_link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  next_link_text: prismic.KeyTextField;
 }
 
 /**
@@ -809,22 +849,52 @@ export interface CatalogCategorySliceDefaultItem {
   /**
    * CtgHeading field in *CatalogCategory → Items*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: catalog_category.items[].ctgheading
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  ctgheading: prismic.RichTextField;
+  ctgheading: prismic.KeyTextField;
 
   /**
    * CtgDescr field in *CatalogCategory → Items*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: catalog_category.items[].ctgdescr
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  ctgdescr: prismic.RichTextField;
+  ctgdescr: prismic.KeyTextField;
+
+  /**
+   * CtgDescr_2 field in *CatalogCategory → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_category.items[].ctgdescr_2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  ctgdescr_2: prismic.KeyTextField;
+
+  /**
+   * CtgDescr_3 field in *CatalogCategory → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_category.items[].ctgdescr_3
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  ctgdescr_3: prismic.KeyTextField;
+
+  /**
+   * Price field in *CatalogCategory → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: catalog_category.items[].price
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  price: prismic.KeyTextField;
 }
 
 /**

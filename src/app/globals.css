@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -94,6 +94,10 @@ body {
 
   .heading_mt {
     @apply md:text-7xl text-2xl font-nunito regular-28 leading-tight tracking-tight text-[#461f0d] mt-16 lg:mb-12 mb-6 text-center
+  }
+
+  .card {
+    @apply lg:w-[350px] w-[240px]
   }
 
   .btn_white {

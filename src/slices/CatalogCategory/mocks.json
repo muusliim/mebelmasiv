@@ -24,6 +24,30 @@
 						}
 					}
 				]
+			},
+			"prevlink": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			},
+			"nextlink": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"next_link_text": {
+				"__TYPE__": "FieldContent",
+				"value": "happy",
+				"type": "Text"
+			},
+			"prev_link_text": {
+				"__TYPE__": "FieldContent",
+				"value": "tobacco",
+				"type": "Text"
 			}
 		},
 		"items": [
@@ -57,31 +81,43 @@
 						}
 					],
 					[
-						"ctgheading",
+						"ctgdescr",
 						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "heading3",
-									"content": {
-										"text": "Refer"
-									}
-								}
-							]
+							"__TYPE__": "FieldContent",
+							"value": "grew",
+							"type": "Text"
 						}
 					],
 					[
-						"ctgdescr",
+						"ctgheading",
 						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "Adipisicing exercitation cillum tempor. Fugiat dolor id pariatur adipisicing esse esse deserunt cillum dolor id do esse."
-									}
-								}
-							]
+							"__TYPE__": "FieldContent",
+							"value": "fastened",
+							"type": "Text"
+						}
+					],
+					[
+						"ctgdescr_3",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "engineer",
+							"type": "Text"
+						}
+					],
+					[
+						"ctgdescr_2",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "in",
+							"type": "Text"
+						}
+					],
+					[
+						"price",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "especially",
+							"type": "Text"
 						}
 					]
 				]

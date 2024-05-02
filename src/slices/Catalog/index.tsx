@@ -24,7 +24,7 @@ const Catalog = async ({ slice }: CatalogProps): Promise<JSX.Element> => {
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="max-container p-10 md:pt-16"
+			className="max-container p-10 md:pt-10"
 		>
 			<div className=" text-center mb-20">
 				<PrismicRichText
