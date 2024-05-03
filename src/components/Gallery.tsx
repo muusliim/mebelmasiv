@@ -11,9 +11,6 @@ export default function Gallery({images}: any) {
             src: image.url,
         }
     ))
-
-    console.log(images);
-
 	return (
 		<div className="flex justify-center">
 			<ImageGallery

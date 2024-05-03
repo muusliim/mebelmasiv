@@ -1,21 +1,13 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import CatalogItems from "../../components/CatalogItems";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
+import CatalogItemsContainer from "@/components/CatalogItemsContainer";
 
-/**
- * Props for `CatalogCategory`.
- */
 export type CatalogCategoryProps =
 	SliceComponentProps<Content.CatalogCategorySlice>;
 
-/**
- * Component for "CatalogCategory" Slices.
- */
 const CatalogCategory = ({ slice }: CatalogCategoryProps): JSX.Element => {
 	const image = slice.items.map((item: any) => item.ctgimage);
-
-	console.log(slice.items.length);
 	return (
 		<section
 			data-slice-type={slice.slice_type}
@@ -56,20 +48,7 @@ const CatalogCategory = ({ slice }: CatalogCategoryProps): JSX.Element => {
 					</PrismicNextLink>
 				</div>
 			</div>
-			<div className="flexCenter flex-wrap gap-12 lg:gap-14">
-				{slice.items.map((item: any, i) => (
-					<div key={slice.items[i].ctgheading}>
-						<CatalogItems
-							image={item.ctgimage}
-							heading={slice.items[i].ctgheading}
-							descrFirst={slice.items[i].ctgdescr}
-							descrSecond={slice.items[i].ctgdescr_2}
-							descrThird={slice.items[i].ctgdescr_3}
-							price={slice.items[i].price}
-						/>
-					</div>
-				))}
-			</div>
+			<CatalogItemsContainer catalogItems={slice.items} />
 		</section>
 	);
 };

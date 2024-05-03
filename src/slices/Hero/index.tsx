@@ -66,7 +66,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 							</p>
 						</div>
 					</DialogTrigger>
-					<DialogContent className="sm:max-w-[425px]">
+					<DialogContent className="sm:max-w-[425px] ">
 						<DialogHeader>
 							<DialogTitle>Акция!</DialogTitle>
 							<DialogDescription>

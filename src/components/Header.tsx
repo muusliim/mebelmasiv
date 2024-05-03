@@ -18,7 +18,7 @@ const Header = () => {
 		mx-auto fixed top-8 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-md shadow-lg gap-2 backdrop-blur-[3px]"
 		>
 			<Link href={"/"}>
-				<Image src={"/assets/images/logo2.png"} alt="logo" height={250} width={250} className="cursor-pointer w-auto h-auto" />
+				<Image src={"/assets/images/logo2.png"} priority={true} alt="logo" height={250} width={250} className="cursor-pointer w-auto h-auto" />
 			</Link>
 
 			<Nav
