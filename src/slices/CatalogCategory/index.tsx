@@ -1,13 +1,16 @@
+'use client'
 import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps, usePrismicDocumentByUID} from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import CatalogItemsContainer from "@/components/CatalogItemsContainer";
+
+
 
 export type CatalogCategoryProps =
 	SliceComponentProps<Content.CatalogCategorySlice>;
 
 const CatalogCategory = ({ slice }: CatalogCategoryProps): JSX.Element => {
-	const image = slice.items.map((item: any) => item.ctgimage);
+
 	return (
 		<section
 			data-slice-type={slice.slice_type}
@@ -34,15 +37,16 @@ const CatalogCategory = ({ slice }: CatalogCategoryProps): JSX.Element => {
 					}}
 				/>
 				<div className="flex justify-center gap-10 mt-10 text-sm font-nunito">
-					<PrismicNextLink
-						field={slice.primary.prevlink}
-						className="hover:text-orange-900 hover:underline"
-					>
-						{slice.primary.prev_link_text}
-					</PrismicNextLink>
+						<PrismicNextLink
+							field={slice.primary.prevlink}
+							className={ "hover:text-orange-900 hover:underline"}
+							
+						>
+							{slice.primary.prev_link_text}
+						</PrismicNextLink>
 					<PrismicNextLink
 						field={slice.primary.nextlink}
-						className="hover:text-orange-900 hover:underline"
+						className="hover:text-orange-900 hover:underline "
 					>
 						{slice.primary.next_link_text}
 					</PrismicNextLink>

@@ -53,7 +53,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 				/>
 				<Button
 					field={slice.primary.button_link}
-					className="flex gap-3 m-3 rounded-lg bg-[#461f0d] text-white font-nunito font-bold text-lg px-10 py-4 hover:bg-[#ac6748]"
+					className="flex gap-3 m-3 rounded-lg bg-[#461f0d] text-white font-nunito font-bold text-lg px-10 py-4 hover:bg-[#ac6748] items-center"
 				>
 					{slice.primary.button_text} <MousePointerClick />
 				</Button>
