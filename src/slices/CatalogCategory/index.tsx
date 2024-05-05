@@ -1,4 +1,3 @@
-'use client'
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps, usePrismicDocumentByUID} from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";

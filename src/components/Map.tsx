@@ -1,19 +1,13 @@
 "use client";
 
-import { memo } from "react";
-import { YMaps, Map as YMap, Placemark } from "@pbe/react-yandex-maps";
+import { YMaps, Map as YMap, Placemark } from "react-yandex-maps-no-default-props";
 
-type MapProps = {
-	latitude: number;
-	longitude: number;
-};
-
-const Map: React.FC<MapProps> = memo(({ latitude, longitude }) => {
+const Map = () => {
 	return (
-		<YMaps preload={true}>
+		<YMaps>
 			<YMap
 				defaultState={{
-					center: [latitude, longitude],
+					center: [59.875456, 30.314637],
 					type: "yandex#map",
 					zoom: 17,
 					controls: ["zoomControl", "fullscreenControl"],
@@ -23,18 +17,18 @@ const Map: React.FC<MapProps> = memo(({ latitude, longitude }) => {
 			>
 				<Placemark
 					modules={["geoObject.addon.balloon"]}
-					defaultGeometry={[latitude, longitude]}
+					geometry={[59.875456, 30.314637]}
 					properties={{
 						balloonContentBody: "Мебель-массив",
 					}}
-					defaultOptions={{
+					options={{
 						preset: "islands#brownDotIcon",
 					}}
 				/>
 			</YMap>
 		</YMaps>
 	);
-});
+};
 Map.displayName = "Map";
 
 export default Map;

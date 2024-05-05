@@ -29,7 +29,7 @@ const Contacts = ({ slice }: ContactsProps): JSX.Element => {
 					}}
 				/>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-center">
-				<Map latitude={slice.primary.geoposition.latitude} longitude={slice.primary.geoposition.longitude}/>
+				<Map />
 					<div>
 						<PrismicRichText
 							field={slice.primary.body}
