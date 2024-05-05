@@ -11,6 +11,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import DialogPromo from "@/components/Promotion";
 
 /**
  * Props for `Hero`.
@@ -30,7 +31,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 				background: `center center / cover no-repeat url(${slice.primary.bg_image.url})`,
 			}}
 		>
-			<div className="w-full h-full flex flex-col justify-evenly items-center backdrop-blur-md py-12 max-md:py-12">
+			<div className="w-full h-full flex flex-col justify-evenly items-center py-12 max-md:py-12">
 				<PrismicRichText
 					field={slice.primary.heading}
 					components={{
@@ -57,30 +58,8 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 				>
 					{slice.primary.button_text} <MousePointerClick />
 				</Button>
-				<Dialog>
-					<DialogTrigger>
-						<div className="fixed lg:bottom-12 md:size-20 size-14 bottom-10 right-0 md:right-16 -translate-x-1/2 md:-translate-y-1/2 hover:scale-110 transition-all delay-200">
-							<CirclePercent className="text-red-700 md:size-20 size-14 animate-spin !-z-10 hover:animate-none" />
-							<p className="text-red-800 font-nunito md:bold-32 -rotate-12 bold-16 translate-x-2">
-								Акция!
-							</p>
-						</div>
-					</DialogTrigger>
-					<DialogContent className="sm:max-w-[425px] ">
-						<DialogHeader>
-							<DialogTitle>Акция!</DialogTitle>
-							<DialogDescription>
-								Предъявив в нашем салоне данный купон Вы получите скидку 5%
-							</DialogDescription>
-						</DialogHeader>
-						<PrismicNextLink field={slice.primary.couponlink}>
-							<PrismicNextImage
-								field={slice.primary.coupon}
-								fallback={<p>Что-то пошло не так...</p>}
-							/>
-						</PrismicNextLink>
-					</DialogContent>
-				</Dialog>
+
+				<DialogPromo couponLink={slice.primary.couponlink} coupon={slice.primary.coupon}/>
 			</div>
 		</section>
 	);

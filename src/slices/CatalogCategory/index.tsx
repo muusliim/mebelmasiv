@@ -38,14 +38,14 @@ const CatalogCategory = ({ slice }: CatalogCategoryProps): JSX.Element => {
 				<div className="flex justify-center gap-10 mt-10 text-sm font-nunito">
 						<PrismicNextLink
 							field={slice.primary.prevlink}
-							className={ "hover:text-orange-900 hover:underline"}
+							className={ "hover:text-orange-900 hover:underline md:text-lg text-sm border-2 rounded-md px-2 py-1 text-center border-zinc-600"}
 							
 						>
 							{slice.primary.prev_link_text}
 						</PrismicNextLink>
 					<PrismicNextLink
 						field={slice.primary.nextlink}
-						className="hover:text-orange-900 hover:underline "
+						className="hover:text-orange-900 hover:underline md:text-lg text-sm border-2 rounded-md px-2 py-1 text-center border-zinc-600 "
 					>
 						{slice.primary.next_link_text}
 					</PrismicNextLink>
