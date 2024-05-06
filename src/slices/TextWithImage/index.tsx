@@ -77,7 +77,7 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
 						/>
 						<Button
 							field={slice.primary.buttonlink}
-							className="w-max mt-14 lg:ml-7 items-center"
+							className="w-max mt-14 lg:ml-7 items-center max-md:mx-auto"
 						>
 							<p>{slice.primary.button_text}</p>
 							<Images />
