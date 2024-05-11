@@ -7,6 +7,7 @@ const CatalogItemsContainer = ({ catalogItems }: any) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage] = useState(12);
 
+
 	const lastItemIndex = currentPage * itemsPerPage;
 	const firstItemIndex = lastItemIndex - itemsPerPage;
 	const currentItems = catalogItems.slice(firstItemIndex, lastItemIndex);
@@ -19,7 +20,7 @@ const CatalogItemsContainer = ({ catalogItems }: any) => {
 		<>
 			<div className="flexCenter flex-wrap gap-12 lg:gap-14">
 				{currentItems.map((item: any, i: number) => (
-					<div key={catalogItems[i].ctgheading}>
+					<div key={i + item}>
 						<CatalogItem
 							image={item.ctgimage}
 							heading={item.ctgheading}
