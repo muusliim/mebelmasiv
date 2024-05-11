@@ -3,14 +3,6 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { CirclePercent, MousePointerClick } from "lucide-react";
 import Button from "@/components/Button";
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
 import DialogPromo from "@/components/Promotion";
 
 /**
