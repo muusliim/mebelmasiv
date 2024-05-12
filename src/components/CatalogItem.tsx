@@ -9,6 +9,15 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
+interface CatalogItemProps {
+	image: any;
+	heading: string;
+	descrFirst: string;
+	descrSecond: string;
+	descrThird: string;
+	price: string | number | null;
+}
+
 const CatalogItem = ({
 	image,
 	heading,
@@ -16,7 +25,7 @@ const CatalogItem = ({
 	descrSecond,
 	descrThird,
 	price,
-}: any) => {
+} : CatalogItemProps) => {
 	return (
 		<Card className="mx-5 w-[300px] lg:w-[350px]">
 			<CardHeader>
