@@ -10,7 +10,10 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #461f0d #fbfbef;
 }
+
 
 body {
   background-color: #fbfbef;

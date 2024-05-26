@@ -1,7 +1,6 @@
-import Button from "@/components/Button";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Rocket, ShieldCheck, ThumbsUp, Zap } from "lucide-react";
+import { Rocket, ThumbsUp, Zap } from "lucide-react";
 
 /**
  * Props for `Features`.

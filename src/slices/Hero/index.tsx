@@ -1,7 +1,6 @@
 import { Content } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { CirclePercent, MousePointerClick } from "lucide-react";
+import { MousePointerClick } from "lucide-react";
 import Button from "@/components/Button";
 import DialogPromo from "@/components/Promotion";
 
@@ -23,7 +22,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 				background: `center center / cover no-repeat url(${slice.primary.bg_image.url})`,
 			}}
 		>
-			<div className="w-full h-full flex flex-col justify-evenly items-center py-12 max-md:py-12">
+			<div className="w-full h-full flex flex-col justify-evenly items-center py-12 max-md:py-12 ">
 				<PrismicRichText
 					field={slice.primary.heading}
 					components={{
