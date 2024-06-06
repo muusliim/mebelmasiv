@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 import clsx from "clsx";
 import { Inter, Nunito, Cuprum } from "next/font/google";
@@ -7,6 +7,7 @@ import "./globals.css";
 import { createClient } from "@/prismicio";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Head from "next/head";
 
 const inter = Inter({
 	subsets: ["cyrillic"],
@@ -49,6 +50,9 @@ export default function RootLayout({
 			className={clsx(nunito.variable, cuprum.variable, inter.variable)}
 		>
 			<body>
+				<Head>
+					<link rel="icon" href="/favicon.ico" />
+				</Head>
 				<Header />
 				{children}
 				<Analytics />
