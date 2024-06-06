@@ -1,4 +1,6 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
+import { Analytics } from '@vercel/analytics/react';
+
 import clsx from "clsx";
 import { Inter, Nunito, Cuprum } from "next/font/google";
 import "./globals.css";
@@ -49,6 +51,7 @@ export default function RootLayout({
 			<body>
 				<Header />
 				{children}
+				<Analytics />
 				<Footer />
 			</body>
 		</html>
