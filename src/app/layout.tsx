@@ -35,14 +35,11 @@ export async function generateMetadata(): Promise<Metadata> {
 		openGraph: {
 			images: [settings.data.og_image.url || ""],
 		},
+		verification: {
+			yandex: "5d8facde203b0ee2",
+		},
 	};
 }
-
-export const metadata: Metadata = {
-	verification: {
-		yandex: "5d8facde203b0ee2",
-	},
-};
 
 export default function RootLayout({
 	children,
