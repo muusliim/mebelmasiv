@@ -35,6 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		openGraph: {
 			images: [settings.data.og_image.url || ""],
 		},
+		
 	};
 }
 
