@@ -1,4 +1,5 @@
-User-agent: *
-Disallow:
+User-Agent: *
+Allow: /
+Disallow: /private/
 
 Sitemap: https://mebelmassive.com/sitemap.xml
