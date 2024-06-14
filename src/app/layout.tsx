@@ -31,12 +31,20 @@ export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: settings.data.site_title || "Fallback",
 		description:
-			settings.data.meta_desciption || "Мебель-массив. Мебель из сосны.",
+			settings.data.meta_desciption || "Мебель-массив. Мебель из сосны. Мебель на заказ г.СПб.",
 		openGraph: {
 			images: [settings.data.og_image.url || ""],
 		},
 		verification: {
 			yandex: "5d8facde203b0ee2",
+		},
+		applicationName: "mebelmassive.com",
+		authors: [{ name: "Мебель-массив", url: "https://mebelmassive.com" }],
+		publisher: "Мебель-массив",
+		icons: {
+			shortcut: "/favicon.ico",
+			apple: "/favicon.ico",
+			icon: "/favicon.ico",
 		},
 	};
 }
