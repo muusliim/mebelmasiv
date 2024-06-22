@@ -2,6 +2,11 @@ import { Home } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+	title: "Страница не найдена!",
+	description: "Страница не найдена!",
+};
+
 const NotFound = () => {
 	return (
 		<section className="max-container p-10 lg:mb-14 mb-10">
