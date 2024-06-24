@@ -31,9 +31,16 @@ export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: settings.data.site_title || "Fallback",
 		description:
-			settings.data.meta_desciption || "Мебель-массив. Мебель из сосны. Мебель на заказ г.СПб.",
+		settings.data.meta_desciption || "Мебель-массив. Мебель из сосны. Мебель на заказ г.СПб.",
+		keywords: ["Мебель из сосны", "Мебель на заказ г.СПб.", "Мебель-массив", "Мебель из массива дерева", "Заказать мебель СПб", "Заказ мебели из дерева", "Сосна мебель СПб", "Мебель из сосны в Санкт-Петербурге", "Мебель сосна, береза, дуб"],
+		alternates:{
+			canonical: "https://mebelmassive.com",
+		},
 		openGraph: {
 			images: [settings.data.og_image.url || ""],
+			type: "website",
+			locale: "ru_RU",
+			url: "https://mebelmassive.com",
 		},
 		verification: {
 			yandex: "5d8facde203b0ee2",
