@@ -44,7 +44,7 @@ const Contacts = ({ slice }: ContactsProps): JSX.Element => {
 							<p className="lg:text-lg lg:ml-7 lg:mt-5 mt-2 text-sm">
 								Контактные телефоны:
 							</p>
-							<div>
+							<div className="flex gap-4">
 								<Link href="tel:+78123691383" className={classForLinks}>
 									(812) 369-13-83
 								</Link>
@@ -55,8 +55,7 @@ const Contacts = ({ slice }: ContactsProps): JSX.Element => {
 						</div>
 						<Link
 							href="mailto:mebelmasiv@mail.ru"
-							className={classForLinks}
-							mt-10
+							className={classForLinks}	
 						>
 							E-mail: mebelmasiv@mail.ru
 						</Link>
