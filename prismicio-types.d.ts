@@ -996,6 +996,56 @@ export interface ContactsSliceDefaultPrimary {
   heading: prismic.RichTextField;
 
   /**
+   * adressText field in *Contacts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.adresstext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  adresstext: prismic.KeyTextField;
+
+  /**
+   * adress field in *Contacts → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.adress
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  adress: prismic.LinkField;
+
+  /**
+   * telephone1 field in *Contacts → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.telephone1
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  telephone1: prismic.LinkField;
+
+  /**
+   * telephone2 field in *Contacts → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.telephone2
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  telephone2: prismic.LinkField;
+
+  /**
+   * email field in *Contacts → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  email: prismic.LinkField;
+
+  /**
    * Body field in *Contacts → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1006,14 +1056,14 @@ export interface ContactsSliceDefaultPrimary {
   body: prismic.RichTextField;
 
   /**
-   * Geoposition field in *Contacts → Primary*
+   * ContactBody field in *Contacts → Primary*
    *
-   * - **Field Type**: GeoPoint
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contacts.primary.geoposition
-   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   * - **API ID Path**: contacts.primary.contactbody
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  geoposition: prismic.GeoPointField;
+  contactbody: prismic.KeyTextField;
 }
 
 /**

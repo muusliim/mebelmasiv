@@ -14,13 +14,6 @@
 					}
 				]
 			},
-			"geoposition": {
-				"position": {
-					"lat": 48.8583736,
-					"lng": 2.2922926
-				},
-				"__TYPE__": "GeoPointContent"
-			},
 			"body": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -31,6 +24,44 @@
 						}
 					}
 				]
+			},
+			"adress": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			},
+			"telephone1": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"telephone2": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			},
+			"email": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
+			},
+			"contactbody": {
+				"__TYPE__": "FieldContent",
+				"value": "tape",
+				"type": "Text"
+			},
+			"adresstext": {
+				"__TYPE__": "FieldContent",
+				"value": "sight",
+				"type": "Text"
 			}
 		},
 		"items": []

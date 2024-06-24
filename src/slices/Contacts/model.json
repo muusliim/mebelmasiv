@@ -21,6 +21,45 @@
             "multi": "heading2,heading3,strong,em"
           }
         },
+        "adresstext": {
+          "type": "Text",
+          "config": {
+            "label": "adressText",
+            "placeholder": ""
+          }
+        },
+        "adress": {
+          "type": "Link",
+          "config": {
+            "label": "adress",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "telephone1": {
+          "type": "Link",
+          "config": {
+            "label": "telephone1",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "telephone2": {
+          "type": "Link",
+          "config": {
+            "label": "telephone2",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "email": {
+          "type": "Link",
+          "config": {
+            "label": "email",
+            "placeholder": "",
+            "select": null
+          }
+        },
         "body": {
           "type": "StructuredText",
           "config": {
@@ -30,10 +69,11 @@
             "multi": "paragraph,strong,em"
           }
         },
-        "geoposition": {
-          "type": "GeoPoint",
+        "contactbody": {
+          "type": "Text",
           "config": {
-            "label": "Geoposition"
+            "label": "ContactBody",
+            "placeholder": ""
           }
         }
       },

@@ -60,7 +60,26 @@ const Footer = async () => {
 										>
 											{link}
 										</Link>
-									) : (
+									) : elem.title === "Наши контакты" ? (
+										link === footerSettings.data.telephone ? (
+										<Link
+											href={`tel:${link}`}
+											key={link}
+											className="hover:text-beige"
+										>
+											{link}
+										</Link>
+										) : (
+											<Link
+												href={'https://maps.app.goo.gl/gehHRJCnScy3fE4T9'}
+												key={link}
+												className="hover:text-beige"
+											>
+												{link}
+											</Link>
+										)
+									) :
+									(
 										<li key={link}>
 											{link}
 										</li>
