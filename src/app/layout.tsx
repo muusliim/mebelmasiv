@@ -7,6 +7,8 @@ import "./globals.css";
 import { createClient } from "@/prismicio";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Metrika from "@/components/Metrica";
+import { Suspense } from "react";
 
 const inter = Inter({
 	subsets: ["cyrillic"],
@@ -54,6 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
 			icon: "/favicon.ico",
 		},
 	};
+	
 }
 
 export default function RootLayout({
@@ -71,6 +74,9 @@ export default function RootLayout({
 				{children}
 				<Analytics />
 				<Footer />
+				<Suspense>
+					<Metrika />
+				</Suspense>
 			</body>
 		</html>
 	);
