@@ -9,6 +9,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Metrika from "@/components/Metrica";
 import { Suspense } from "react";
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 
 const inter = Inter({
 	subsets: ["cyrillic"],
@@ -78,6 +80,7 @@ export default function RootLayout({
 					<Metrika />
 				</Suspense>
 			</body>
+			<GoogleAnalytics gaId="G-DSLCXCK06H" />
 		</html>
 	);
 }
